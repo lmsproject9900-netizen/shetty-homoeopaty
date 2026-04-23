@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Video Gallery - Sports & Cultural | Shetty Homoeopathic Medical College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f7ec 0%, #e2ecd9 100%);
+            color: #1e2a2e;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .gallery-header {
+            background: #1a4d2c;
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+
+        .gallery-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .gallery-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a4d2c;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e6b422;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            color: #4a6741;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            font-size: 1.2rem;
+            color: #1a4d2c;
+            margin-bottom: 8px;
+        }
+
+        .video-info p {
+            color: #5a6e5a;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .video-info i {
+            color: #e6b422;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e6b42220;
+            color: #1a4d2c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 24px;
+            margin: 40px 0;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: #caddc3;
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            color: #4a6741;
+            margin-bottom: 15px;
+        }
+
+        .empty-state p {
+            color: #7a9a7a;
+            font-family: monospace;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a2a1c;
+            color: #d4e6cf;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin: 10px 0;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-header h1 {
+                font-size: 1.8rem;
+            }
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .container {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="gallery-header">
+    <h1><i class="fas fa-video"></i> Sports & Cultural Gallery</h1>
+    <p>Watch memorable moments from our college events, sports meets, and cultural festivals</p>
+    <a href="#" onclick="history.back(); return false;" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+
+<div class="container">
+    <!-- Sports Section -->
+    <h2 class="section-title"><i class="fas fa-futbol"></i> Sports Events</h2>
+    <p class="section-subtitle">Annual Sports Meet | Inter-College Tournaments | Athletics | Cricket | Volleyball | Kabaddi</p>
+    
+    <div class="video-grid" id="sportsGrid">
+        <!-- Sports videos will be dynamically inserted here -->
+    </div>
+
+    <!-- Cultural Section -->
+    <h2 class="section-title" style="margin-top: 20px;"><i class="fas fa-music"></i> Cultural Events</h2>
+    <p class="section-subtitle">Annual Day | Freshers' Party | Traditional Day | Talent Show | Fest Celebrations</p>
+    
+    <div class="video-grid" id="culturalGrid">
+        <!-- Cultural videos will be dynamically inserted here -->
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <p>© 2025 SHETTY SANGAPPA MEMORIAL TRUST | Shetty Homoeopathic Medical College & Hospital</p>
+            <p>📍 Shahbad Road, Kalaburagi, Karnataka - 585105 | 📞 +91 9663363444</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ============================================
+    // 🔴🔴🔴 PASTE YOUR YOUTUBE VIDEO LINKS BELOW 🔴🔴🔴
+    // ============================================
+    // 
+    // INSTRUCTIONS:
+    // 1. Copy your YouTube video URLs
+    // 2. Paste them in the arrays below
+    // 3. Format: "https://www.youtube.com/watch?v=VIDEO_ID"
+    // 4. You can also use "https://youtu.be/VIDEO_ID" format
+    // 
+    // ============================================
+
+    // SPORTS VIDEOS - Add your YouTube links here
+    const sportsVideos = [
+        // 👇 PASTE SPORTS VIDEO LINKS BELOW (one per line, comma separated)
+        "https://youtu.be/V9WGjdjrmL4?si=GNNNIPlvck_WOzdl",
+         "https://youtu.be/qHfD2-pvw2s?si=5OfPV-uktlY9G6rV",
+         "https://youtu.be/nVAkIH8rkgE?si=uvpnTG8kJIEzU--8",
+         "https://youtu.be/Cc2GqDvmBuY?si=Qwf3yG8oaV4YyLVC",
+          "https://youtu.be/Cc2GqDvmBuY?si=Qwf3yG8oaV4YyLVC",
+         "https://youtu.be/6zg53Mx6kv0?si=murePOB0xMsE8gby"
+    ];
+
+    // CULTURAL VIDEOS - Add your YouTube links here
+    const culturalVideos = [
+        // 👇 PASTE CULTURAL VIDEO LINKS BELOW (one per line, comma separated)
+        "https://youtu.be/elwnuuOVQSA?si=hdkb163AJ5QyZEO8",
+       "https://youtu.be/EX5NtDExtp4?si=ZWqZfxmlvooW4XJt",
+        "https://youtu.be/44RgyFGlrxk?si=Ve_BjNEghr6uRCZF",
+
+        
+        
+      
+    ];
+
+    // ============================================
+    // DON'T EDIT BELOW THIS LINE - The code will automatically handle everything
+    // ============================================
+
+    // Function to extract YouTube video ID from any YouTube URL format
+    function getYouTubeId(url) {
+        if (!url || url === '') return null;
+        const patterns = [
+            /(?:youtube\.com\/watch\?v=)([^&]+)/,
+            /(?:youtu\.be\/)([^?]+)/,
+            /(?:youtube\.com\/embed\/)([^?]+)/,
+            /(?:youtube\.com\/shorts\/)([^?]+)/
+        ];
+        for (let pattern of patterns) {
+            const match = url.match(pattern);
+            if (match) return match[1];
+        }
+        return null;
+    }
+
+    // Function to create video card HTML
+    function createVideoCard(videoUrl, title, date, category) {
+        const videoId = getYouTubeId(videoUrl);
+        if (!videoId) return null;
+        
+        const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+        const icon = category === 'sports' ? 'fa-futbol' : 'fa-music';
+        const badgeText = category === 'sports' ? '🏆 SPORTS' : '🎭 CULTURAL';
+        
+        return `
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="${embedUrl}" title="${title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3><i class="fas ${icon}"></i> ${title}</h3>
+                    <p><i class="far fa-calendar-alt"></i> ${date}</p>
+                    <span class="badge">${badgeText}</span>
+                </div>
+            </div>
+        `;
+    }
+
+    // Default titles for videos if no custom title provided
+    const sportsTitles = [
+        "Annual Sports Meet 2024 - Inaugural Ceremony",
+        "Cricket Tournament Final Match Highlights",
+        "Athletics Championship - 100m Race",
+        "Volleyball Inter-College Competition",
+        "Kabaddi Tournament - College Level",
+        "Sports Day Prize Distribution"
+    ];
+    
+    const culturalTitles = [
+        "Annual Cultural Fest 2024 - Grand Finale",
+        "Freshers' Party 2024 - Highlights",
+        "Traditional Day Celebrations",
+        "Talent Show - College Students Performance",
+        "Diwali Celebrations at Campus",
+        "Annual Day 2024 - Cultural Program"
+    ];
+
+    // Generate date for display
+    function getRandomDate(prefix) {
+        return `${prefix} 2024`;
+    }
+
+    // Render sports videos
+    function renderSportsVideos() {
+        const sportsGrid = document.getElementById('sportsGrid');
+        if (!sportsGrid) return;
+        
+        if (sportsVideos.length === 0) {
+            sportsGrid.innerHTML = `
+                <div class="empty-state" style="grid-column:1/-1;">
+                    <i class="fas fa-video-slash"></i>
+                    <h3>No Sports Videos Added Yet</h3>
+                    <p>📌 <strong>How to add videos:</strong><br><br>
+                    Open this HTML file in a code editor.<br>
+                    Scroll to the bottom and find the <strong style="color:#1a4d2c;">// PASTE YOUR YOUTUBE VIDEO LINKS BELOW</strong> section.<br><br>
+                    <strong style="color:#1a4d2c;">Example format:</strong><br>
+                    <code>"https://www.youtube.com/watch?v=VIDEO_ID",</code><br><br>
+                    <i class="fas fa-youtube" style="color:#ff0000;"></i> Once you add links, videos will appear here automatically!
+                    </p>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '';
+        sportsVideos.forEach((url, index) => {
+            const title = `Sports Event ${index + 1}`;
+            const date = getRandomDate('March');
+            const card = createVideoCard(url, title, date, 'sports');
+            if (card) html += card;
+        });
+        
+        if (html === '') {
+            sportsGrid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-exclamation-triangle"></i><h3>Invalid Video Links</h3><p>Please check your YouTube URLs and make sure they are correct.</p></div>`;
+        } else {
+            sportsGrid.innerHTML = html;
+        }
+    }
+
+    // Render cultural videos
+    function renderCulturalVideos() {
+        const culturalGrid = document.getElementById('culturalGrid');
+        if (!culturalGrid) return;
+        
+        if (culturalVideos.length === 0) {
+            culturalGrid.innerHTML = `
+                <div class="empty-state" style="grid-column:1/-1;">
+                    <i class="fas fa-video-slash"></i>
+                    <h3>No Cultural Videos Added Yet</h3>
+                    <p>📌 <strong>How to add videos:</strong><br><br>
+                    Open this HTML file in a code editor.<br>
+                    Scroll to the bottom and find the <strong style="color:#1a4d2c;">// PASTE YOUR CULTURAL VIDEO LINKS BELOW</strong> section.<br><br>
+                    <strong style="color:#1a4d2c;">Example format:</strong><br>
+                    <code>"https://www.youtube.com/watch?v=VIDEO_ID",</code><br><br>
+                    <i class="fas fa-youtube" style="color:#ff0000;"></i> Once you add links, videos will appear here automatically!
+                    </p>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '';
+        culturalVideos.forEach((url, index) => {
+            const title = `Cultural Event ${index + 1}`;
+            const date = getRandomDate('February');
+            const card = createVideoCard(url, title, date, 'cultural');
+            if (card) html += card;
+        });
+        
+        if (html === '') {
+            culturalGrid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-exclamation-triangle"></i><h3>Invalid Video Links</h3><p>Please check your YouTube URLs and make sure they are correct.</p></div>`;
+        } else {
+            culturalGrid.innerHTML = html;
+        }
+    }
+
+    // Initialize the gallery
+    renderSportsVideos();
+    renderCulturalVideos();
+</script>
+
+<!-- 
+    ============================================================
+    🔴🔴🔴 QUICK INSTRUCTIONS - HOW TO ADD YOUR VIDEOS 🔴🔴🔴
+    ============================================================
+    
+    STEP 1: Open this file in Notepad or any text editor
+    
+    STEP 2: Find the section that says:
+            "// PASTE YOUR YOUTUBE VIDEO LINKS BELOW"
+    
+    STEP 3: For SPORTS videos, add your links inside the sportsVideos array like this:
+    
+            const sportsVideos = [
+                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_1",
+                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_2",
+                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_3"
+            ];
+    
+    STEP 4: For CULTURAL videos, add your links inside the culturalVideos array like this:
+    
+            const culturalVideos = [
+                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_1",
+                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_2"
+            ];
+    
+    STEP 5: Save the file and refresh your browser
+    
+    ============================================================
+    ✅ SUPPORTED VIDEO FORMATS:
+    ============================================================
+    
+    • https://www.youtube.com/watch?v=VIDEO_ID
+    • https://youtu.be/VIDEO_ID
+    • https://www.youtube.com/embed/VIDEO_ID
+    • https://youtube.com/shorts/VIDEO_ID
+    
+    ============================================================
+    📝 EXAMPLE WITH REAL VIDEO (DELETE AFTER TESTING):
+    ============================================================
+    
+    const sportsVideos = [
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "https://www.youtube.com/watch?v=9bZkp7q19f0"
+    ];
+    
+    ============================================================
+-->
+</body>
+</html>

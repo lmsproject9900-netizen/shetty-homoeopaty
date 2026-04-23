@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Shetty Homoeopathic Medical College & Hospital | SGI Kalaburagi</title>
+    <!-- Google Fonts for elegant typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* Top header bar with contact */
+        .top-bar {
+            background-color: #0f3b2c;
+            color: #f9fafb;
+            padding: 8px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            gap: 15px;
+        }
+        .top-bar a {
+            color: #f9fafb;
+            text-decoration: none;
+            margin: 0 8px;
+            transition: 0.2s;
+        }
+        .top-bar a:hover { color: #ffdd99; }
+        .social-icons i {
+            margin-left: 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        /* Main Navigation */
+        .nav-container {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-icon {
+            background: #0f3b2c;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+        }
+        .logo-text h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f3b2c;
+            line-height: 1.2;
+        }
+        .logo-text p {
+            font-size: 0.7rem;
+            color: #4b5563;
+            letter-spacing: 0.5px;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1f2937;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            padding: 6px 0;
+        }
+        .nav-links li a:hover { color: #0f3b2c; border-bottom: 2px solid #0f3b2c; }
+
+        /* Hero / Banner */
+        .hero {
+            background: linear-gradient(135deg, #e6f7f0 0%, #cfe8df 100%);
+            padding: 40px 5%;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            color: #0a2e23;
+        }
+        .hero p {
+            max-width: 800px;
+            margin: 12px auto 0;
+            font-size: 1rem;
+            color: #2c3e2f;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+
+        /* About Section (with numbered points) */
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .about-content {
+            flex: 2;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            color: #0f3b2c;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .section-title:after {
+            content: '';
+            width: 70px;
+            height: 3px;
+            background: #cb9e5c;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .about-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        .about-list li {
+            margin-bottom: 18px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .about-list li strong {
+            background: #0f3b2c;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .chairman-card {
+            flex: 1.2;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            padding: 24px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .chairman-img {
+            width: 140px;
+            height: 140px;
+            background: #d9e6df;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #0f3b2c;
+        }
+        .chairman-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .chairman-card .title {
+            color: #cb9e5c;
+            font-weight: 600;
+            margin: 6px 0;
+        }
+        .chairman-card p {
+            font-size: 0.85rem;
+            text-align: left;
+            margin-top: 15px;
+            color: #2d3e3a;
+        }
+
+        /* info banners */
+        .info-highlight {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            background: #f1f9f5;
+            border-radius: 28px;
+            padding: 30px;
+            margin: 40px 0;
+            justify-content: space-between;
+        }
+        .info-card {
+            flex: 1;
+            text-align: center;
+        }
+        .info-card i {
+            font-size: 2rem;
+            color: #0f3b2c;
+            margin-bottom: 10px;
+        }
+        .info-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        /* Quick links + footer style */
+        .footer {
+            background: #0a2a1f;
+            color: #cfdfd7;
+            padding: 40px 5% 20px;
+            margin-top: 50px;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 180px;
+        }
+        .footer-col h4 {
+            color: #f5c542;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #cfdfd7;
+            text-decoration: none;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            font-size: 0.75rem;
+            border-top: 1px solid #2a4a3a;
+            margin-top: 30px;
+        }
+        button, .call-btn {
+            background: #cb9e5c;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #0a2a1f;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .quick-links-list {
+            list-style: none;
+        }
+        .quick-links-list li {
+            margin-bottom: 8px;
+        }
+        .quick-links-list a {
+            text-decoration: none;
+            color: #cfdfd7;
+        }
+
+        @media (max-width: 780px) {
+            .navbar { flex-direction: column; gap: 12px; }
+            .nav-links { justify-content: center; }
+            .about-grid { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top bar with contact and social -->
+    <div class="top-bar">
+        <div>
+            <i class="fas fa-phone-alt"></i> <a href="tel:+919663363444">+91 9663363444</a> / 
+            <a href="tel:+919739912926">+91 9739912926</a>
+            <i class="fas fa-envelope" style="margin-left: 12px;"></i> <a href="mailto:info@shettyhomoeopathy.edu.in">info@shettyhomoeopathy.edu.in</a>
+        </div>
+        <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin-in"></i>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="navbar">
+            <div class="logo-area">
+                <div class="logo-icon">SHMC</div>
+                <div class="logo-text">
+                    <h1>SHETTY HOMOEOPATHIC <br>MEDICAL COLLEGE & HOSPITAL</h1>
+                    <p>Approved by NCH | MINISTRY OF AYUSH | Affiliated to RGUHS, Bengaluru</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Mandatory Information</a></li>
+                <li><a href="#">College</a></li>
+                <li><a href="#">Hospital</a></li>
+                <li><a href="#">Administration</a></li>
+                <li><a href="#">Student’s Zone</a></li>
+                <li><a href="#">Photo Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero / tagline -->
+    <div class="hero">
+        <h2>Healing with Homoeopathy, Excellence in Education</h2>
+        <p>Shetty Homoeopathic Medical College & Hospital – A unit of Shetty Group of Institutions, dedicated to quality healthcare and holistic medical education.</p>
+    </div>
+
+    <div class="container">
+        <!-- ABOUT US SECTION with 06 points -->
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 class="section-title">ABOUT OUR INSTITUTE</h2>
+                <ul class="about-list">
+                    <li><strong>01</strong> Shetty Homoeopathic medical College and Hospital is a unit of Shetty Group of Institutions, (SGI) founded by Mr. Uday Shankar Shetty, a dynamic personality and the mastermind behind this prestigious organization. Shetty Group of Institutions established in the year 2000.</li>
+                    <li><strong>02</strong> Shetty Group of Institutions comprises of Engineering, Homoeopathy, Ayurvedic, Pharmacy, Nursing and Paramedical institutions. This education major has set a hall mark standard in professional education sector which allows it to redefine its own standards consistently.</li>
+                    <li><strong>03</strong> The 20 acres campus is replete with facilities like spacious classrooms, smart classrooms, well equipped labs, hostel, food court, Playground etc. Located on Shahabad road, Kalaburagi, Karnataka. SGI has dedicated itself to the cause of providing quality education.</li>
+                    <li><strong>04</strong> Excellence that is reflected in the innovative conduct and advancement of education, research and patient care.</li>
+                    <li><strong>05</strong> Respect for individuals who are affiliated with or come in contact with Shetty Homeopathy Medical College & Hospital: staff, students, residents, fellows, faculty, staff, partners, communities, patients and families.</li>
+                    <li><strong>06</strong> Integrity that embraces the very highest standards of ethical behavior and exemplary moral character. Diversity that is reflected in actions that appreciate all individuals.</li>
+                </ul>
+                <!-- additional highlight: approved by NCH etc -->
+                <div style="margin-top: 20px; background:#eef2ef; padding: 15px; border-radius: 20px;">
+                    <i class="fas fa-check-circle" style="color:#0f3b2c;"></i> <strong>Approved by NCH, Ministry of Ayush, Govt. of India</strong><br>
+                    Affiliated to Rajiv Gandhi University of Health Sciences, Bengaluru, Karnataka.
+                </div>
+            </div>
+           <div class="chairman-card">
+    <!-- Image tag added here -->
+        <img src="chairman.png" alt="Shri Udayshankar Shetty - Chairman, Shetty Group of Institutions" class="chairman-img">
+    <h3>SHRI UDAYSHANKAR SHETTY</h3>
+    <div class="title">Chairman, Shetty Group Of Institutions</div>
+    <p>Shetty Group of Institutions (SGI) is a nurturing ground for an individual's holistic development. We at SGI are committed to providing high quality education of global standards to the students that enter the campus. Transformation of every student is the key objective at SGI. With a vision to transform the society at our core, we believe we can make a difference in every student that's part of this institution. Every student of the Institute takes immense pride in calling this their Alma Mater. With a large network and industry connections, our group of institutions have a proven track record of placing students in some of the most renowned companies around the world. The faculty expertise backed by a large vision is one thing that separates us from the rest. Our Infrastructure along with the location of SGI campus, the students have a perfect environment to grow and thrive in a dynamic way. As a founder and chairman, I take immense pleasure and pride in transforming students and shaping their career with all the possible resources available to us at Shetty Group of Institutions Campus.</p>
+    <button style="margin-top: 15px;" onclick="alert('Call: +91 9663363444 | Visit campus for inquiry')"><i class="fas fa-phone"></i> Enquire Now</button>
+</div>
+
+<style>
+/* Optional: Add styling for the chairman image */
+.chairman-card {
+    background: white;
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    text-align: center;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.chairman-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #1a4d2c;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.chairman-card h3 {
+    color: #1a4d2c;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.chairman-card .title {
+    color: #e6b422;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.chairman-card p {
+    text-align: left;
+    color: #2c3e2f;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.chairman-card button {
+    background-color: #1a4d2c;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chairman-card button:hover {
+    background-color: #0e3a21;
+    transform: translateY(-2px);
+}
+</style>
+        </div>
+
+        <!-- Quick facts: call, location extra -->
+        <div class="info-highlight">
+            <div class="info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h4>Our Campus</h4>
+                <p>Shetty Education Hub, Shahbad Road, Kalaburagi, Karnataka - 585105</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h4>Established</h4>
+                <p>Year 2000 | 20 Acres Campus</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-stethoscope"></i>
+                <h4>Hospital Services</h4>
+                <p>Advanced Homoeopathic Care, Charitable OPD, Inpatient facilities</p>
+            </div>
+        </div>
+
+        <!-- Other sections: College, Hospital, Student's zone teaser -->
+        <div style="display: flex; flex-wrap: wrap; gap: 25px; margin: 50px 0;">
+            <div style="flex:1; background: white; border-radius: 28px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <i class="fas fa-university" style="font-size: 2rem; color:#0f3b2c;"></i>
+                <h3 style="margin: 12px 0;">College</h3>
+                <p style="font-size: 0.9rem;">UG & PG programs in Homoeopathy, modern labs, digital library, experienced faculty. Emphasis on research-based learning and clinical training.</p>
+                <a href="#" style="color:#cb9e5c; font-weight:600;">Read More →</a>
+            </div>
+            <div style="flex:1; background: white; border-radius: 28px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <i class="fas fa-hospital-user" style="font-size: 2rem; color:#0f3b2c;"></i>
+                <h3 style="margin: 12px 0;">Hospital</h3>
+                <p style="font-size: 0.9rem;">Well-equipped Homoeopathic Hospital with OPD, IPD, specialty clinics. Free health camps and community outreach programs.</p>
+                <a href="#" style="color:#cb9e5c; font-weight:600;">Know More →</a>
+            </div>
+            <div style="flex:1; background: white; border-radius: 28px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <i class="fas fa-users" style="font-size: 2rem; color:#0f3b2c;"></i>
+                <h3 style="margin: 12px 0;">Student’s Zone</h3>
+                <p style="font-size: 0.9rem;">Scholarships, student clubs, mentorship, sports, cultural fests, and placement support. Holistic personality development.</p>
+                <a href="#" style="color:#cb9e5c; font-weight:600;">Explore →</a>
+            </div>
+        </div>
+
+        <!-- Photo Gallery preview & Notice Board teaser -->
+        <div style="background: #eef3ef; border-radius: 28px; padding: 25px; margin: 20px 0;">
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between;">
+                <div>
+                    <h3><i class="fas fa-images"></i> Photo Gallery</h3>
+                    <p style="font-size: 0.9rem;">Campus life, classrooms, hospital activities, events and celebrations.</p>
+                    <button class="call-btn" style="background:#0f3b2c; color:white;" onclick="alert('Visit Photo Gallery: View moments of Shetty Homoeopathic Campus')">View Gallery →</button>
+                </div>
+                <div>
+                    <h3><i class="fas fa-bullhorn"></i> Notice Board</h3>
+                    <ul style="list-style: none;">
+                        <li>📢 <strong>Admission 2026-27 Open</strong> – Apply before May 30</li>
+                        <li>📢 <strong>National Homoeopathy Day</strong> – Celebration on April 10</li>
+                        <li>📢 <strong>Free Health Checkup Camp</strong> – 15th April 2026</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3><i class="fas fa-address-card"></i> Administration</h3>
+                    <p>Principal's Desk, Governing Council, Administrative Office Hours: Mon-Sat 9AM-4PM</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mandatory Information for NCH ( quick link) -->
+        <div style="text-align: center; margin: 30px 0 20px;">
+            <a href="#" style="background: #0f3b2c; color: white; padding: 12px 30px; border-radius: 40px; text-decoration: none; display: inline-block;"><i class="fas fa-file-alt"></i> Mandatory Information For NCH (Click here)</a>
+            <p style="margin-top: 12px; font-size: 0.8rem;">Compliance with National Commission for Homoeopathy, Ministry of AYUSH, Govt. of India</p>
+        </div>
+    </div>
+
+    <!-- FOOTER (including quick links, address, contact) -->
+    <div class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Shetty Homoeopathic Medical College & Hospital</h4>
+                <p>A unit of Shetty Group of Institutions (SGI).</p>
+                <p>SGI comprises Engineering, Homoeopathy, Ayurvedic, Pharmacy, Nursing and Paramedical institutions.</p>
+                <p><i class="fas fa-map-pin"></i> Shetty Education Hub, Shahbad Road, Kalaburagi, Karnataka - 585105</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="quick-links-list">
+                    <li><a href="#">Hoxme</a></li>
+                    <li><a href="#">About Institute</a></li>
+                    <li><a href="#">Photo Gallery</a></li>
+                    <li><a href="#">Student’s Zone</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">NCH Mandatory Disclosure</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <p><i class="fas fa-phone"></i> +91 9663363444 / +91 9739912926</p>
+                <p><i class="fas fa-envelope"></i> info@shettyhomoeopathy.edu.in</p>
+                <p><i class="fas fa-clock"></i> College Office: 9:00 AM – 5:00 PM</p>
+                <div class="social-icons" style="margin-top: 12px;">
+                    <i class="fab fa-facebook-f"></i> <i class="fab fa-instagram"></i> <i class="fab fa-linkedin-in"></i>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>Shetty Education Hub, Shahbad Road, Kalaburagi, Karnataka. 585105</p>
+                <button class="call-btn" style="background:#cb9e5c; color:#0a2a1f; margin-top: 8px;" onclick="window.open('https://maps.google.com/?q=Shetty+Education+Hub+Kalaburagi','_blank')">Get Directions →</button>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 Shetty Homoeopathic Medical College & Hospital. Approved by NCH, Ministry of AYUSH Govt. of India. Affiliated to RGUHS, Bengaluru. All Rights Reserved.
+        </div>
+    </div>
+
+    <!-- floating contact / call reminder -->
+    <div style="position: fixed; bottom: 20px; right: 20px; background: #0f3b2c; color: white; border-radius: 50px; padding: 10px 20px; font-size: 0.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+        <i class="fas fa-headset"></i> <strong>Emergency / Admission:</strong> +91 9663363444
+    </div>
+</body>
+</html>

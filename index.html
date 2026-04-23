@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Shetty Homoeopathic Medical College & Hospital | SGI Kalaburagi</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fafcf8;
+      color: #1e2a2e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* reusable container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header / Navigation - Updated with logo section */
+    .top-bar {
+      background-color: #1a4d2c;
+      color: white;
+      padding: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    .top-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* Logo wrapper in top bar */
+    .top-logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255,255,255,0.08);
+      padding: 5px 18px;
+      border-radius: 60px;
+    }
+
+    .logo-placeholder {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-placeholder img {
+      height: 44px;
+      width: auto;
+      max-width: 48px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+
+    .logo-text-small {
+      font-size: 0.75rem;
+      font-weight: 600;
+      
+      line-height: 1.2;
+    }
+
+    .logo-text-small span {
+      font-size: 0.6rem;
+      font-weight: normal;
+      opacity: 0.9;
+    }
+
+    .contact-info i {
+      margin-right: 6px;
+      font-size: 0.85rem;
+    }
+
+    .contact-info span {
+      margin-right: 20px;
+    }
+
+    .nch-badge {
+      background-color: #e6b422;
+      color: #1e3a2f;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    .main-nav {
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 14px 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo-area h1 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a4d2c;
+      line-height: 1.2;
+    }
+
+    .logo-area p {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #4b6b4b;
+      letter-spacing: 0.3px;
+    }
+
+    /* Navigation with dropdowns */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      font-weight: 500;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1f2e2a;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      display: inline-block;
+      padding: 6px 0;
+    }
+
+    .nav-links a:hover {
+      color: #2b7a3e;
+    }
+
+    /* Dropdown menu styling */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 210px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      z-index: 1;
+      top: 32px;
+      left: 0;
+      padding: 10px 0;
+      border: 1px solid #e0ecdc;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      color: #2c4b36;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f8ed;
+      color: #1a4d2c;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .mobile-menu-icon {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: #1a4d2c;
+    }
+
+    /* Hero / Banner */
+    .hero {
+      background: linear-gradient(105deg, #eef5e9 0%, #dde9da 100%);
+      padding: 50px 0 40px;
+      border-bottom: 1px solid #caddc3;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-text {
+      flex: 1.2;
+    }
+
+    .hero-text .tagline {
+      background: #1a4d2c20;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1a4d2c;
+      margin-bottom: 18px;
+    }
+
+    .hero-text h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #133d24;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      color: #2c4b36;
+      margin-bottom: 28px;
+      max-width: 90%;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background-color: #1a4d2c;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.25s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background-color: #0e3a21;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid #1a4d2c;
+      background: transparent;
+      color: #1a4d2c;
+      padding: 10px 26px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .btn-outline:hover {
+      background: #1a4d2c10;
+    }
+
+    .hero-stats {
+      flex: 0.8;
+      background: rgba(255,255,240,0.6);
+      backdrop-filter: blur(2px);
+      border-radius: 32px;
+      padding: 28px 24px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+    }
+
+    .stat-item {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1f633a;
+    }
+
+    /* About Section */
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #153d25;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #4a6741;
+      max-width: 700px;
+      margin: 0 auto 50px auto;
+    }
+
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      color: #2c3e2f;
+    }
+
+    .about-highlight {
+      background: #eef2e6;
+      border-left: 5px solid #1a4d2c;
+      padding: 16px 22px;
+      border-radius: 20px;
+      margin: 20px 0;
+    }
+
+    /* Gallery mini grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .gallery-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-card .caption {
+      padding: 12px;
+      text-align: center;
+      font-weight: 500;
+      background: #fff;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: #f3f8ef;
+    }
+
+    .testimonial-slider {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 26px;
+      width: 280px;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.03);
+      transition: 0.2s;
+    }
+
+    .testimonial-card i {
+      color: #e6b422;
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      margin-bottom: 18px;
+      color: #2f3e2e;
+    }
+
+    .student-name {
+      font-weight: 700;
+      color: #1a4d2c;
+    }
+
+    /* CTA banner */
+    .cta-banner {
+      background: #1a4d2c;
+      color: white;
+      padding: 48px 20px;
+      text-align: center;
+      border-radius: 48px;
+      margin: 30px 0 50px;
+    }
+
+    .cta-banner h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .cta-banner .btn-primary {
+      background: #f5b81b;
+      color: #1e3a2a;
+      margin-top: 12px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0a2a1c;
+      color: #d4e6cf;
+      padding: 50px 0 30px;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    .footer-col p, .footer-col a {
+      color: #c1ddb5;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .social-icons i {
+      font-size: 1.4rem;
+      margin-right: 15px;
+      color: #c1ddb5;
+      transition: 0.2s;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #2d553b;
+      font-size: 0.8rem;
+    }
+
+    /* responsive */
+    @media (max-width: 880px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: white;
+        padding: 20px 0;
+        gap: 16px;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .mobile-menu-icon {
+        display: block;
+      }
+      .hero-text h2 {
+        font-size: 1.8rem;
+      }
+      .hero-grid {
+        flex-direction: column;
+      }
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        padding-left: 20px;
+        display: none;
+        background: #f9fbf7;
+      }
+      .dropdown.active .dropdown-content {
+        display: block;
+      }
+      .top-logo-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top bar with NCH approval & contacts + TWO LOGO PLACEHOLDERS -->
+<div class="top-bar">
+  <div class="container">
+    <!-- Logo placeholder group (2 images) - EXTRA LARGE SIZE -->
+    <div class="top-logo-wrapper">
+      <!-- Logo placeholder 1: Trust Logo / SGI Logo - EXTRA BIG -->
+      <div class="logo-placeholder">
+        <img src="https://web.archive.org/web/20250713091325im_/https://shettyhomoeopathy.com/wp-content/uploads/2024/03/SGi-Logo-512x512_PNG-1.png" alt="SGI Trust Logo" class="extra-big-logo">
+        <div class="logo-text-large">SHETTY SANGAPPA<br><span>MEMORIAL TRUST</span></div>
+      </div>
+      
+      <!-- Logo placeholder 2: Hospital / Homoeopathic College Logo - EXTRA BIG -->
+      <div class="logo-placeholder">
+        <img src="https://web.archive.org/web/20250713091325im_/https://shettyhomoeopathy.com/wp-content/uploads/2024/03/shetty-hospital-logo-e1709563653515-150x148.png" alt="Shetty Homoeopathic Logo" class="extra-big-logo">
+        <div class="logo-text-large">SHETTY HOMOEO.<br><span>MEDICAL COLLEGE & HOSPITAL</span></div>
+      </div>
+    </div>
+    <div class="contact-info">
+      <i class="fas fa-phone-alt"></i> <span>+91 9663363444</span>
+      <i class="fas fa-envelope"></i> <span>info@shettyhomoeopathy.edu.in</span>
+    </div>
+    <div class="nch-badge">
+      ✅ Approved by NCH | MINISTRY OF AYUSH, GOVT. OF INDIA
+    </div>
+  </div>
+</div>
+
+<style>
+/* Updated styles for EXTRA LARGE images in top bar */
+.top-bar {
+  background-color: #1a4d2c;
+  color: white;
+  padding: 15px 0;
+  font-size: 0.9rem;
+}
+
+.top-bar .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo wrapper in top bar - spacious for bigger logos */
+.top-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: rgba(255,255,255,0.1);
+  padding: 12px 30px;
+  border-radius: 80px;
+}
+
+.logo-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* EXTRA BIG LOGO IMAGES - significantly larger */
+.extra-big-logo {
+  height: 90px;
+  width: auto;
+  max-width: 90px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+/* Larger text next to logos */
+.logo-text-large {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0.5px;
+}
+
+.logo-text-large span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.92;
+}
+
+.contact-info i {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.contact-info span {
+  margin-right: 22px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.nch-badge {
+  background-color: #e6b422;
+  color: #1e3a2f;
+  padding: 8px 16px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* Responsive adjustments for mobile and tablet */
+@media (max-width: 1000px) {
+  .extra-big-logo {
+    height: 70px;
+    max-width: 70px;
+  }
+  
+  .logo-text-large {
+    font-size: 0.85rem;
+  }
+  
+  .top-logo-wrapper {
+    gap: 25px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-logo-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+  }
+  
+  .extra-big-logo {
+    height: 60px;
+    max-width: 60px;
+  }
+  
+  .logo-text-large {
+    font-size: 0.75rem;
+  }
+  
+  .contact-info {
+    text-align: center;
+    width: 100%;
+  }
+}
+</style>
+
+<!-- Main Navigation with Dropdowns for About, College, Hospital -->
+<div class="main-nav">
+  <div class="nav-container">
+    <div class="logo-area">
+      <h1>SHETTY HOMOEO. MEDICAL COLLEGE</h1>
+      <p>Affiliated to RGUHS, Bengaluru | Shetty Group of Institutions</p>
+    </div>
+    <div class="mobile-menu-icon" id="mobileMenuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#">Home</a></li>
+      
+      <!-- ABOUT Dropdown (with subpages) -->
+      <li class="dropdown">
+        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="about.html">About institute</a>
+          <a href="#">principal desk</a>
+          <a href="#">Vision & Mission</a>
+          <a href="#">permission letter</a>
+          
+        </div>
+      </li>
+      
+      <li><a href="info.html">Mandatory Info</a></li>
+      
+      <!-- COLLEGE Dropdown -->
+      <li class="dropdown">
+        <a href="#">College <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="#">affilation</a>
+          <a href="#">departments</a>
+          <a href="#">central library</a>
+          <a href="#">infrastructure</a>
+          <a href="#">extracurricular activities</a>
+
+        </div>
+      </li>
+      
+      <!-- HOSPITAL  Dropdown -->
+      <li class="dropdown">
+        <a href="#">Hospital <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="C:\My Use\Website\homoeopathy\OPD_Timings_Hospital_Info.pdf">OPD </a>
+          <a href="#">IPD </a>
+          <a href="#">Laboratory</a>
+          <a href="#">Radiology</a>
+          <a href="#">Physiotherapy of yoga and rehabilitation</a>
+             <a href="#">dispenser</a>
+        </div>
+      </li>
+      
+      <li><a href="#">Student’s Zone</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Hero Section with Empowering Minds -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="tagline">🏆 Shetty Group of Institutions, Where Knowledge Meets Innovation</div>
+      <h2>"Empowering Minds: Excellence across Homoeopathy, Engineering, Ayurveda & more"</h2>
+      <p>Experience the hallmark standard of education across Homoeopathy, Engineering, Ayurvedic, Pharmacy, Nursing, and Paramedical disciplines — consistently redefining excellence.</p>
+      <div class="btn-group">
+        <a href="#" class="btn-primary">Apply Now <i class="fas fa-arrow-right"></i></a>
+        <a href="#" class="btn-outline">Virtual Campus Tour</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">17+ Acres</div>
+        <div>Sprawling Green Campus</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">6+ Disciplines</div>
+        <div>Engg, Homoeo, Ayurveda, Pharmacy, Nursing, Para</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1000+ Students</div>
+        <div>Holistic Learning Environment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">About Shetty Sangappa Memorial Trust</h2>
+    <div class="section-sub">Empowering young minds with technical & entrepreneurial knowledge since 2011</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>Shetty Group of Institutions</strong> is a part of Shetty Sangappa Memorial Trust established in 2011 to empower young budding brains with technical and entrepreneurial knowledge and skills, assisting them in holistic growth. Located just on the other side of the Highway (NH 150) on Shahbad road, Kalaburagi, the college nestles amidst sprawling 17 acres of greenery with a hilly backdrop.</p>
+        <p>The campus breathes fresh air of nature with vast greenery, free from pollution. The ambience is ideal for learning, research, living and exploration. <strong>Shetty Homoeopathic Medical College and Hospital</strong> is a flagship unit of SGI, which comprises Engineering, Homoeopathy, Ayurvedic, Pharmacy, Nursing, and Paramedical institutions.</p>
+        <div class="about-highlight">
+          <i class="fas fa-leaf" style="color:#1a4d2c; margin-right: 8px;"></i> This education major has set a hallmark standard in professional education — redefining its own standards consistently.
+        </div>
+        <a href="#" class="btn-outline" style="border-radius:30px;">Read More →</a>
+      </div>
+      <div class="about-text">
+        <img src="https://web.archive.org/web/20250713091325im_/https://shettyhomoeopathy.com/wp-content/uploads/2024/03/college.jpeg" alt="Campus greenery" style="width:100%; border-radius: 32px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <h2 class="section-title">Photo Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="https://web.archive.org/web/20250713091325im_/https://shettyhomoeopathy.com/wp-content/uploads/2024/03/sit-clg.jpg" alt="College Building">
+        <div class="caption">State-of-art Infrastructure</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://web.archive.org/web/20250713091325im_/https://shettyhomoeopathy.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-27-at-7.02.57-PM.jpeg" alt="Hospital Wing">
+        <div class="caption">Shetty Homoeopathic Hospital</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://web.archive.org/web/20250713091325im_/https://shettyhomoeopathy.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-27-at-7.02.50-PM.jpeg" alt="Hospital Wing">
+        <div class="caption">Shetty Homoeopathic Hospital</div>
+      </div>
+     
+    </div>
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="#" class="btn-outline">View Full Gallery <i class="fas fa-images"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="section testimonials">
+  <div class="container">
+    <h2 class="section-title">What Our Students Say</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>I have started to explore myself after joining here in many ways as I have newly found that I have leadership qualities to manage any task given to me. I have gained more confidence to express myself without hesitation than before.</p>
+        <div class="student-name">— Mahesh Kumar, 3rd year BHMS</div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>I'm glad that I chose Shetty Homoeopathic Medical College as my college of choice as I stay at the girls hostel on the campus it's very good with all the facilities and secure.</p>
+        <div class="student-name">— Gurusiddamma, 3rd year BHMS</div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>Good environment to learn with excellent teaching faculty as their care and attention to each and every student is same. Regular tests and exams are conducted as it helps me finding better me everyday.</p>
+        <div class="student-name">— Nagesh, 1st year BHMS</div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>Extracurricular activities and Sports are also given equal importance as Curriculum. Both indoor and outdoor sports are given importance and the support from our management for sports is incredible.</p>
+        <div class="student-name">— Dhanashreya, 1st year BHMS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + Call Today -->
+<div class="container">
+  <div class="cta-banner">
+    <h3>Start your journey towards excellence with Shetty Group of Institutions today!</h3>
+    <p>Admissions Open 2025-26 | Limited seats for BHMS & Allied Health Sciences</p>
+    <a href="tel:+919663363444" class="btn-primary" style="background:#f5b81b; color:#1d3a2b;"><i class="fas fa-phone-alt"></i> Call Today: +91 9663363444 / +91 9739912926</a>
+    <p style="margin-top: 20px; font-size:0.9rem;">Shetty Education Hub, Shahbad Road, Kalaburagi, Karnataka. 585105</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>📚 Shetty Homoeopathic MC</h4>
+        <p>Approved by NCH, Ministry of Ayush, Govt. of India</p>
+        <p>Affiliated to RGUHS, Bengaluru</p>
+        <p>Unit of Shetty Group of Institutions — Engineering, Homoeopathy, Ayurveda, Pharmacy, Nursing, Paramedical</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#">Home</a>
+        <a href="#">About Institute</a>
+        <a href="gallery.html">Photo Gallery</a>
+        <a href="#">Student’s Zone</a>
+        <a href="#">Mandatory Disclosures</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Address</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Shetty Education Hub, Shahbad Road, Kalaburagi, Karnataka. 585105</p>
+        <p><i class="fas fa-phone"></i> +91 9663363444 , +91 9739912926</p>
+        <p><i class="fas fa-envelope"></i> shetty.homoeopathic@gmail.com</p>
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-linkedin"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 SHETTY SANGAPPA MEMORIAL TRUST. All rights reserved. | Empowering minds, shaping futures.</p>
+      <p style="margin-top: 6px;">📍 Approved by NCH | MINISTRY OF AYUSH | Affiliated to RGUHS, Bengaluru</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile menu toggle and dropdown helper script -->
+<script>
+  const toggleBtn = document.getElementById('mobileMenuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if(toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+  
+  // For mobile responsive: enable dropdown toggles on tap
+  const dropdowns = document.querySelectorAll('.dropdown');
+  dropdowns.forEach(drop => {
+    const dropLink = drop.querySelector('a');
+    if(dropLink) {
+      dropLink.addEventListener('click', (e) => {
+        if(window.innerWidth <= 880) {
+          e.preventDefault();
+          drop.classList.toggle('active');
+        }
+      });
+    }
+  });
+
+  // smooth scroll for internal anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if(target) {
+        e.preventDefault();
+        target.scrollIntoView({behavior: 'smooth'});
+      }
+    });
+  });
+</script>
+</body>
+</html>
