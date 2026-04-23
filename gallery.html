@@ -53,6 +53,64 @@
             background: rgba(255,255,255,0.3);
         }
 
+        /* Tab Navigation */
+        .tab-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #caddc3;
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #5a6e5a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tab-btn i {
+            margin-right: 8px;
+        }
+
+        .tab-btn:hover {
+            color: #1a4d2c;
+            background: rgba(26, 77, 44, 0.1);
+        }
+
+        .tab-btn.active {
+            color: #1a4d2c;
+            background: #e6b42220;
+            border-bottom: 3px solid #e6b422;
+        }
+
+        /* Content Panels */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Container */
         .container {
             max-width: 1280px;
@@ -100,7 +158,7 @@
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
         }
@@ -147,6 +205,121 @@
             margin-top: 8px;
         }
 
+        /* Photo Grid Styles */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .photo-wrapper {
+            position: relative;
+            padding-bottom: 75%;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .photo-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover .photo-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .photo-info {
+            padding: 15px;
+        }
+
+        .photo-info h3 {
+            font-size: 1rem;
+            color: #1a4d2c;
+            margin-bottom: 5px;
+        }
+
+        .photo-info p {
+            color: #5a6e5a;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: #e6b422;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            margin: 0 20px;
+            border-radius: 10px;
+        }
+
         /* Empty State */
         .empty-state {
             text-align: center;
@@ -177,6 +350,13 @@
             text-align: left;
         }
 
+        .empty-state code {
+            background: #e8e8e8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #1a4d2c;
+        }
+
         /* Footer */
         footer {
             background-color: #0a2a1c;
@@ -196,12 +376,19 @@
             .gallery-header h1 {
                 font-size: 1.8rem;
             }
-            .video-grid {
+            .video-grid, .photo-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
             .container {
                 padding: 20px 16px;
+            }
+            .tabs {
+                justify-content: center;
+            }
+            .tab-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -215,22 +402,65 @@
     <a href="#" onclick="history.back(); return false;" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
 </div>
 
-<div class="container">
-    <!-- Sports Section -->
-    <h2 class="section-title"><i class="fas fa-futbol"></i> Sports Events</h2>
-    <p class="section-subtitle">Annual Sports Meet | Inter-College Tournaments | Athletics | Cricket | Volleyball | Kabaddi</p>
-    
-    <div class="video-grid" id="sportsGrid">
-        <!-- Sports videos will be dynamically inserted here -->
+<!-- Tab Navigation -->
+<div class="tab-container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('videos')">
+            <i class="fas fa-video"></i> Videos
+        </button>
+        <button class="tab-btn" onclick="switchTab('photos')">
+            <i class="fas fa-image"></i> Photos
+        </button>
     </div>
+</div>
 
-    <!-- Cultural Section -->
-    <h2 class="section-title" style="margin-top: 20px;"><i class="fas fa-music"></i> Cultural Events</h2>
-    <p class="section-subtitle">Annual Day | Freshers' Party | Traditional Day | Talent Show | Fest Celebrations</p>
-    
-    <div class="video-grid" id="culturalGrid">
-        <!-- Cultural videos will be dynamically inserted here -->
+<!-- Videos Tab Content -->
+<div id="videosTab" class="tab-content active">
+    <div class="container">
+        <!-- Sports Section -->
+        <h2 class="section-title"><i class="fas fa-futbol"></i> Sports Events</h2>
+        <p class="section-subtitle">Annual Sports Meet | Inter-College Tournaments | Athletics | Cricket | Volleyball | Kabaddi</p>
+        
+        <div class="video-grid" id="sportsGrid">
+            <!-- Sports videos will be dynamically inserted here -->
+        </div>
+
+        <!-- Cultural Section -->
+        <h2 class="section-title" style="margin-top: 20px;"><i class="fas fa-music"></i> Cultural Events</h2>
+        <p class="section-subtitle">Annual Day | Freshers' Party | Traditional Day | Talent Show | Fest Celebrations</p>
+        
+        <div class="video-grid" id="culturalGrid">
+            <!-- Cultural videos will be dynamically inserted here -->
+        </div>
     </div>
+</div>
+
+<!-- Photos Tab Content -->
+<div id="photosTab" class="tab-content">
+    <div class="container">
+        <!-- Sports Photos Section -->
+        <h2 class="section-title"><i class="fas fa-futbol"></i> Sports Moments</h2>
+        <p class="section-subtitle">Action shots, team photos, and memorable sports moments</p>
+        
+        <div class="photo-grid" id="sportsPhotosGrid">
+            <!-- Sports photos will be dynamically inserted here -->
+        </div>
+
+        <!-- Cultural Photos Section -->
+        <h2 class="section-title" style="margin-top: 20px;"><i class="fas fa-music"></i> Cultural Moments</h2>
+        <p class="section-subtitle">Performances, celebrations, and cultural event memories</p>
+        
+        <div class="photo-grid" id="culturalPhotosGrid">
+            <!-- Cultural photos will be dynamically inserted here -->
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightboxImg" src="" alt="">
+    <div id="lightboxCaption" class="lightbox-caption"></div>
 </div>
 
 <footer>
@@ -246,43 +476,78 @@
     // ============================================
     // 🔴🔴🔴 PASTE YOUR YOUTUBE VIDEO LINKS BELOW 🔴🔴🔴
     // ============================================
-    // 
-    // INSTRUCTIONS:
-    // 1. Copy your YouTube video URLs
-    // 2. Paste them in the arrays below
-    // 3. Format: "https://www.youtube.com/watch?v=VIDEO_ID"
-    // 4. You can also use "https://youtu.be/VIDEO_ID" format
-    // 
-    // ============================================
-
+    
     // SPORTS VIDEOS - Add your YouTube links here
     const sportsVideos = [
-        // 👇 PASTE SPORTS VIDEO LINKS BELOW (one per line, comma separated)
         "https://youtu.be/V9WGjdjrmL4?si=GNNNIPlvck_WOzdl",
-         "https://youtu.be/qHfD2-pvw2s?si=5OfPV-uktlY9G6rV",
-         "https://youtu.be/nVAkIH8rkgE?si=uvpnTG8kJIEzU--8",
-         "https://youtu.be/Cc2GqDvmBuY?si=Qwf3yG8oaV4YyLVC",
-          "https://youtu.be/Cc2GqDvmBuY?si=Qwf3yG8oaV4YyLVC",
-         "https://youtu.be/6zg53Mx6kv0?si=murePOB0xMsE8gby"
+        "https://youtu.be/qHfD2-pvw2s?si=5OfPV-uktlY9G6rV",
+        "https://youtu.be/nVAkIH8rkgE?si=uvpnTG8kJIEzU--8",
+        "https://youtu.be/Cc2GqDvmBuY?si=Qwf3yG8oaV4YyLVC",
+        "https://youtu.be/Cc2GqDvmBuY?si=Qwf3yG8oaV4YyLVC",
+        "https://youtu.be/6zg53Mx6kv0?si=murePOB0xMsE8gby"
     ];
 
     // CULTURAL VIDEOS - Add your YouTube links here
     const culturalVideos = [
-        // 👇 PASTE CULTURAL VIDEO LINKS BELOW (one per line, comma separated)
         "https://youtu.be/elwnuuOVQSA?si=hdkb163AJ5QyZEO8",
-       "https://youtu.be/EX5NtDExtp4?si=ZWqZfxmlvooW4XJt",
-        "https://youtu.be/44RgyFGlrxk?si=Ve_BjNEghr6uRCZF",
-
-        
-        
-      
+        "https://youtu.be/EX5NtDExtp4?si=ZWqZfxmlvooW4XJt",
+        "https://youtu.be/44RgyFGlrxk?si=Ve_BjNEghr6uRCZF"
     ];
 
     // ============================================
-    // DON'T EDIT BELOW THIS LINE - The code will automatically handle everything
+    // 📸📸📸 PASTE YOUR PHOTO IMAGE URLs BELOW 📸📸📸
+    // ============================================
+    // INSTRUCTIONS:
+    // 1. Upload your photos to a hosting service (Imgur, Google Drive, or your server)
+    // 2. Get the direct image URL (should end with .jpg, .png, .jpeg, .webp)
+    // 3. Paste them in the arrays below with title and description
     // ============================================
 
-    // Function to extract YouTube video ID from any YouTube URL format
+    // SPORTS PHOTOS - Add your image URLs here
+    const sportsPhotos = [
+        // 👇 Format: { url: "IMAGE_URL", title: "Photo Title", description: "Brief description" }
+        { url: "https://picsum.photos/id/1/800/600", title: "Cricket Tournament 2024", description: "Winning moment of inter-college cricket finals" },
+        { url: "https://picsum.photos/id/20/800/600", title: "Athletics Championship", description: "100m race finals at Annual Sports Meet" },
+        { url: "https://picsum.photos/id/24/800/600", title: "Volleyball Competition", description: "Team Shetty in action" },
+        { url: "https://picsum.photos/id/26/800/600", title: "Kabaddi Tournament", description: "Intense match between college teams" },
+        { url: "https://picsum.photos/id/28/800/600", title: "Prize Distribution", description: "Chief guest awarding winners" },
+        { url: "https://picsum.photos/id/29/800/600", title: "Sports Day Parade", description: "March past by all participants" }
+    ];
+
+    // CULTURAL PHOTOS - Add your image URLs here
+   const culturalPhotos = [
+    // 👇 Format: { url: "IMAGE_URL", title: "Photo Title", description: "Brief description" }
+    { url: "photos/WhatsApp Image 2026-04-23 at 11.22.27.jpeg", title: "world environmental day", description: "world environmental day" },
+    { url: "photos/WhatsApp Image 2026-04-23 at 11.22.28 (2).jpeg", title: "environmental day 2", description: "ev day" },
+
+    { url: "photos/WhatsApp Image 2026-04-23 at 11.22.30.jpeg", title: "staffs", description: "bhms staff photos" },
+    { url: "photos/WhatsApp Image 2026-04-23 at 11.22.31.jpeg", title: "independence day", description: "" },
+    { url: "photos/whatsApp Image 2026-04-23 at 11.22.31 (1).jpeg", title: "Dance Performance", description: "Classical dance by students" }
+];
+    // ============================================
+    // DON'T EDIT BELOW THIS LINE
+    // ============================================
+
+    // Tab Switching Function
+    function switchTab(tab) {
+        const videosTab = document.getElementById('videosTab');
+        const photosTab = document.getElementById('photosTab');
+        const tabs = document.querySelectorAll('.tab-btn');
+        
+        if (tab === 'videos') {
+            videosTab.classList.add('active');
+            photosTab.classList.remove('active');
+            tabs[0].classList.add('active');
+            tabs[1].classList.remove('active');
+        } else {
+            videosTab.classList.remove('active');
+            photosTab.classList.add('active');
+            tabs[0].classList.remove('active');
+            tabs[1].classList.add('active');
+        }
+    }
+
+    // Function to extract YouTube video ID
     function getYouTubeId(url) {
         if (!url || url === '') return null;
         const patterns = [
@@ -298,7 +563,7 @@
         return null;
     }
 
-    // Function to create video card HTML
+    // Function to create video card
     function createVideoCard(videoUrl, title, date, category) {
         const videoId = getYouTubeId(videoUrl);
         if (!videoId) return null;
@@ -321,26 +586,46 @@
         `;
     }
 
-    // Default titles for videos if no custom title provided
-    const sportsTitles = [
-        "Annual Sports Meet 2024 - Inaugural Ceremony",
-        "Cricket Tournament Final Match Highlights",
-        "Athletics Championship - 100m Race",
-        "Volleyball Inter-College Competition",
-        "Kabaddi Tournament - College Level",
-        "Sports Day Prize Distribution"
-    ];
-    
-    const culturalTitles = [
-        "Annual Cultural Fest 2024 - Grand Finale",
-        "Freshers' Party 2024 - Highlights",
-        "Traditional Day Celebrations",
-        "Talent Show - College Students Performance",
-        "Diwali Celebrations at Campus",
-        "Annual Day 2024 - Cultural Program"
-    ];
+    // Function to create photo card
+    function createPhotoCard(photo, category) {
+        const icon = category === 'sports' ? 'fa-futbol' : 'fa-music';
+        return `
+            <div class="photo-card" onclick="openLightbox('${photo.url}', '${photo.title}', '${photo.description}')">
+                <div class="photo-wrapper">
+                    <img src="${photo.url}" alt="${photo.title}" loading="lazy">
+                </div>
+                <div class="photo-info">
+                    <h3><i class="fas ${icon}"></i> ${photo.title}</h3>
+                    <p><i class="far fa-calendar-alt"></i> ${photo.description}</p>
+                </div>
+            </div>
+        `;
+    }
 
-    // Generate date for display
+    // Lightbox functions
+    function openLightbox(url, title, description) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        
+        lightboxImg.src = url;
+        lightboxCaption.innerHTML = `<strong>${title}</strong><br>${description}`;
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+    }
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+
+    // Generate date for videos
     function getRandomDate(prefix) {
         return `${prefix} 2024`;
     }
@@ -419,54 +704,116 @@
         }
     }
 
-    // Initialize the gallery
+    // Render sports photos
+    function renderSportsPhotos() {
+        const sportsPhotosGrid = document.getElementById('sportsPhotosGrid');
+        if (!sportsPhotosGrid) return;
+        
+        if (sportsPhotos.length === 0) {
+            sportsPhotosGrid.innerHTML = `
+                <div class="empty-state" style="grid-column:1/-1;">
+                    <i class="fas fa-image"></i>
+                    <h3>No Sports Photos Added Yet</h3>
+                    <p>📌 <strong>How to add photos:</strong><br><br>
+                    Open this HTML file in a code editor.<br>
+                    Scroll to the bottom and find the <strong style="color:#1a4d2c;">// SPORTS PHOTOS</strong> section.<br><br>
+                    <strong style="color:#1a4d2c;">Example format:</strong><br>
+                    <code>{ url: "https://your-image-url.jpg", title: "Photo Title", description: "Description" },</code><br><br>
+                    <i class="fas fa-cloud-upload-alt"></i> Upload photos to Imgur or Google Drive first!
+                    </p>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '';
+        sportsPhotos.forEach(photo => {
+            html += createPhotoCard(photo, 'sports');
+        });
+        sportsPhotosGrid.innerHTML = html;
+    }
+
+    // Render cultural photos
+    function renderCulturalPhotos() {
+        const culturalPhotosGrid = document.getElementById('culturalPhotosGrid');
+        if (!culturalPhotosGrid) return;
+        
+        if (culturalPhotos.length === 0) {
+            culturalPhotosGrid.innerHTML = `
+                <div class="empty-state" style="grid-column:1/-1;">
+                    <i class="fas fa-image"></i>
+                    <h3>No Cultural Photos Added Yet</h3>
+                    <p>📌 <strong>How to add photos:</strong><br><br>
+                    Open this HTML file in a code editor.<br>
+                    Scroll to the bottom and find the <strong style="color:#1a4d2c;">// CULTURAL PHOTOS</strong> section.<br><br>
+                    <strong style="color:#1a4d2c;">Example format:</strong><br>
+                    <code>{ url: "https://your-image-url.jpg", title: "Photo Title", description: "Description" },</code><br><br>
+                    <i class="fas fa-cloud-upload-alt"></i> Upload photos to Imgur or Google Drive first!
+                    </p>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '';
+        culturalPhotos.forEach(photo => {
+            html += createPhotoCard(photo, 'cultural');
+        });
+        culturalPhotosGrid.innerHTML = html;
+    }
+
+    // Initialize everything
     renderSportsVideos();
     renderCulturalVideos();
+    renderSportsPhotos();
+    renderCulturalPhotos();
 </script>
 
 <!-- 
     ============================================================
-    🔴🔴🔴 QUICK INSTRUCTIONS - HOW TO ADD YOUR VIDEOS 🔴🔴🔴
+    📸📸📸 HOW TO ADD YOUR OWN PHOTOS 📸📸📸
     ============================================================
     
-    STEP 1: Open this file in Notepad or any text editor
+    STEP 1: Upload your photos to a free image hosting service:
+            • Imgur (https://imgur.com/upload)
+            • PostImages (https://postimages.org/)
+            • Or upload to your own server
     
-    STEP 2: Find the section that says:
-            "// PASTE YOUR YOUTUBE VIDEO LINKS BELOW"
+    STEP 2: Get the direct image URL (should end with .jpg, .png, .jpeg, .webp)
+            • On Imgur: Right-click image → Copy image address
     
-    STEP 3: For SPORTS videos, add your links inside the sportsVideos array like this:
+    STEP 3: Open this file in a text editor and find:
+            "// SPORTS PHOTOS" section
     
-            const sportsVideos = [
-                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_1",
-                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_2",
-                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_3"
+    STEP 4: Add your photos like this:
+    
+            const sportsPhotos = [
+                { url: "YOUR_IMAGE_URL_1", title: "Photo Title 1", description: "Brief description 1" },
+                { url: "YOUR_IMAGE_URL_2", title: "Photo Title 2", description: "Brief description 2" },
+                { url: "YOUR_IMAGE_URL_3", title: "Photo Title 3", description: "Brief description 3" }
             ];
     
-    STEP 4: For CULTURAL videos, add your links inside the culturalVideos array like this:
+    STEP 5: Do the same for CULTURAL PHOTOS section
     
-            const culturalVideos = [
-                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_1",
-                "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_2"
-            ];
-    
-    STEP 5: Save the file and refresh your browser
+    STEP 6: Save the file and refresh your browser
     
     ============================================================
-    ✅ SUPPORTED VIDEO FORMATS:
+    ✅ QUICK TIPS:
     ============================================================
     
-    • https://www.youtube.com/watch?v=VIDEO_ID
-    • https://youtu.be/VIDEO_ID
-    • https://www.youtube.com/embed/VIDEO_ID
-    • https://youtube.com/shorts/VIDEO_ID
+    • Use high-quality images (recommended size: 800x600 or larger)
+    • Keep titles short and descriptive
+    • Descriptions should be 1-2 sentences
+    • You can add as many photos as you want
+    • The grid will automatically adjust to fit your screen
     
     ============================================================
-    📝 EXAMPLE WITH REAL VIDEO (DELETE AFTER TESTING):
+    📝 EXAMPLE WITH REAL PHOTOS:
     ============================================================
     
-    const sportsVideos = [
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        "https://www.youtube.com/watch?v=9bZkp7q19f0"
+    const sportsPhotos = [
+        { url: "https://i.imgur.com/your-photo-1.jpg", title: "Cricket Finals 2024", description: "Team celebration after winning the championship" },
+        { url: "https://i.imgur.com/your-photo-2.jpg", title: "Athletics Meet", description: "Students participating in 100m race" }
     ];
     
     ============================================================

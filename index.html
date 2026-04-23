@@ -33,7 +33,7 @@
     .top-bar {
       background-color: #1a4d2c;
       color: white;
-      padding: 12px 0;
+      padding: 15px 0;
       font-size: 0.9rem;
     }
 
@@ -42,62 +42,69 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
     }
 
-    /* Logo wrapper in top bar */
+    /* Logo wrapper in top bar - spacious for bigger logos */
     .top-logo-wrapper {
       display: flex;
       align-items: center;
-      gap: 20px;
-      background: rgba(255,255,255,0.08);
-      padding: 5px 18px;
-      border-radius: 60px;
+      gap: 40px;
+      background: rgba(255,255,255,0.1);
+      padding: 12px 30px;
+      border-radius: 80px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .logo-placeholder {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 18px;
     }
 
-    .logo-placeholder img {
-      height: 44px;
+    /* EXTRA BIG LOGO IMAGES */
+    .extra-big-logo {
+      height: 90px;
       width: auto;
-      max-width: 48px;
+      max-width: 90px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
     }
 
-    .logo-text-small {
+    /* Larger text next to logos */
+    .logo-text-large {
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text-large span {
       font-size: 0.75rem;
-      font-weight: 600;
-      
-      line-height: 1.2;
-    }
-
-    .logo-text-small span {
-      font-size: 0.6rem;
-      font-weight: normal;
-      opacity: 0.9;
+      font-weight: 500;
+      opacity: 0.92;
     }
 
     .contact-info i {
-      margin-right: 6px;
-      font-size: 0.85rem;
+      margin-right: 8px;
+      font-size: 1rem;
     }
 
     .contact-info span {
-      margin-right: 20px;
+      margin-right: 22px;
+      font-size: 0.95rem;
+      font-weight: 500;
     }
 
     .nch-badge {
       background-color: #e6b422;
       color: #1e3a2f;
-      padding: 4px 12px;
+      padding: 8px 16px;
       border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.75rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: center;
     }
 
     .main-nav {
@@ -478,7 +485,24 @@
       font-size: 0.8rem;
     }
 
-    /* responsive */
+    /* ========== RESPONSIVE ENHANCEMENTS ========== */
+    @media (max-width: 1000px) {
+      .extra-big-logo {
+        height: 70px;
+        max-width: 70px;
+      }
+      .logo-text-large {
+        font-size: 0.85rem;
+      }
+      .top-logo-wrapper {
+        gap: 25px;
+        padding: 10px 20px;
+      }
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+    }
+
     @media (max-width: 880px) {
       .nav-links {
         display: none;
@@ -494,25 +518,121 @@
       .mobile-menu-icon {
         display: block;
       }
-      .hero-text h2 {
-        font-size: 1.8rem;
-      }
-      .hero-grid {
-        flex-direction: column;
-      }
       .dropdown-content {
         position: static;
         box-shadow: none;
         padding-left: 20px;
         display: none;
         background: #f9fbf7;
+        border-radius: 12px;
+        margin-top: 8px;
       }
       .dropdown.active .dropdown-content {
         display: block;
       }
       .top-logo-wrapper {
-        flex-wrap: wrap;
+        width: 100%;
+      }
+      .contact-info {
+        text-align: center;
+        width: 100%;
+      }
+      .contact-info span {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .nch-badge {
+        width: 100%;
+        text-align: center;
+      }
+      .hero-grid {
+        flex-direction: column;
+      }
+      .hero-text p {
+        max-width: 100%;
+      }
+      .btn-group {
         justify-content: center;
+      }
+      .hero-stats {
+        width: 100%;
+      }
+      .section {
+        padding: 50px 0;
+      }
+      .about-grid {
+        flex-direction: column-reverse;
+      }
+      .about-text img {
+        max-height: 300px;
+        object-fit: cover;
+      }
+      .footer-grid {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 16px;
+      }
+      .extra-big-logo {
+        height: 60px;
+        max-width: 60px;
+      }
+      .logo-text-large {
+        font-size: 0.75rem;
+      }
+      .top-logo-wrapper {
+        gap: 20px;
+        padding: 8px 16px;
+      }
+      .hero-text h2 {
+        font-size: 1.8rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .cta-banner h3 {
+        font-size: 1.5rem;
+      }
+      .testimonial-card {
+        width: 100%;
+        max-width: 350px;
+      }
+      .gallery-card img {
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-bar .container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .logo-placeholder {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+      }
+      .extra-big-logo {
+        height: 80px;
+        max-width: 80px;
+      }
+      .logo-text-large {
+        text-align: center;
+      }
+      .contact-info span {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .btn-primary, .btn-outline {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      .hero-stats {
+        padding: 20px 16px;
       }
     }
   </style>
@@ -522,15 +642,15 @@
 <!-- Top bar with NCH approval & contacts + TWO LOGO PLACEHOLDERS -->
 <div class="top-bar">
   <div class="container">
-    <!-- Logo placeholder group (2 images) - EXTRA LARGE SIZE -->
+    <!-- Logo placeholder group (2 images) -->
     <div class="top-logo-wrapper">
-      <!-- Logo placeholder 1: Trust Logo / SGI Logo - EXTRA BIG -->
+      <!-- Logo placeholder 1: Trust Logo / SGI Logo -->
       <div class="logo-placeholder">
         <img src="https://web.archive.org/web/20250713091325im_/https://shettyhomoeopathy.com/wp-content/uploads/2024/03/SGi-Logo-512x512_PNG-1.png" alt="SGI Trust Logo" class="extra-big-logo">
         <div class="logo-text-large">SHETTY SANGAPPA<br><span>MEMORIAL TRUST</span></div>
       </div>
       
-      <!-- Logo placeholder 2: Hospital / Homoeopathic College Logo - EXTRA BIG -->
+      <!-- Logo placeholder 2: Hospital / Homoeopathic College Logo -->
       <div class="logo-placeholder">
         <img src="https://web.archive.org/web/20250713091325im_/https://shettyhomoeopathy.com/wp-content/uploads/2024/03/shetty-hospital-logo-e1709563653515-150x148.png" alt="Shetty Homoeopathic Logo" class="extra-big-logo">
         <div class="logo-text-large">SHETTY HOMOEO.<br><span>MEDICAL COLLEGE & HOSPITAL</span></div>
@@ -546,123 +666,6 @@
   </div>
 </div>
 
-<style>
-/* Updated styles for EXTRA LARGE images in top bar */
-.top-bar {
-  background-color: #1a4d2c;
-  color: white;
-  padding: 15px 0;
-  font-size: 0.9rem;
-}
-
-.top-bar .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Logo wrapper in top bar - spacious for bigger logos */
-.top-logo-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  background: rgba(255,255,255,0.1);
-  padding: 12px 30px;
-  border-radius: 80px;
-}
-
-.logo-placeholder {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-/* EXTRA BIG LOGO IMAGES - significantly larger */
-.extra-big-logo {
-  height: 90px;
-  width: auto;
-  max-width: 90px;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-}
-
-/* Larger text next to logos */
-.logo-text-large {
-  font-size: 1rem;
-  font-weight: 800;
-  line-height: 1.35;
-  letter-spacing: 0.5px;
-}
-
-.logo-text-large span {
-  font-size: 0.75rem;
-  font-weight: 500;
-  opacity: 0.92;
-}
-
-.contact-info i {
-  margin-right: 8px;
-  font-size: 1rem;
-}
-
-.contact-info span {
-  margin-right: 22px;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.nch-badge {
-  background-color: #e6b422;
-  color: #1e3a2f;
-  padding: 8px 16px;
-  border-radius: 40px;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-/* Responsive adjustments for mobile and tablet */
-@media (max-width: 1000px) {
-  .extra-big-logo {
-    height: 70px;
-    max-width: 70px;
-  }
-  
-  .logo-text-large {
-    font-size: 0.85rem;
-  }
-  
-  .top-logo-wrapper {
-    gap: 25px;
-    padding: 10px 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .top-logo-wrapper {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    width: 100%;
-  }
-  
-  .extra-big-logo {
-    height: 60px;
-    max-width: 60px;
-  }
-  
-  .logo-text-large {
-    font-size: 0.75rem;
-  }
-  
-  .contact-info {
-    text-align: center;
-    width: 100%;
-  }
-}
-</style>
-
 <!-- Main Navigation with Dropdowns for About, College, Hospital -->
 <div class="main-nav">
   <div class="nav-container">
@@ -674,17 +677,16 @@
       <i class="fas fa-bars"></i>
     </div>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       
-      <!-- ABOUT Dropdown (with subpages) -->
+      <!-- ABOUT Dropdown -->
       <li class="dropdown">
-        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+        <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
           <a href="about.html">About institute</a>
           <a href="#">principal desk</a>
           <a href="#">Vision & Mission</a>
           <a href="#">permission letter</a>
-          
         </div>
       </li>
       
@@ -699,25 +701,24 @@
           <a href="#">central library</a>
           <a href="#">infrastructure</a>
           <a href="#">extracurricular activities</a>
-
         </div>
       </li>
       
-      <!-- HOSPITAL  Dropdown -->
+      <!-- HOSPITAL Dropdown -->
       <li class="dropdown">
         <a href="#">Hospital <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
-          <a href="C:\My Use\Website\homoeopathy\OPD_Timings_Hospital_Info.pdf">OPD </a>
-          <a href="#">IPD </a>
+          <a href="C:\My Use\Website\homoeopathy\OPD_Timings_Hospital_Info.pdf">OPD</a>
+          <a href="#">IPD</a>
           <a href="#">Laboratory</a>
           <a href="#">Radiology</a>
           <a href="#">Physiotherapy of yoga and rehabilitation</a>
-             <a href="#">dispenser</a>
+          <a href="#">dispenser</a>
         </div>
       </li>
       
       <li><a href="#">Student’s Zone</a></li>
-      <li><a href="#">Gallery</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
   </div>
@@ -790,7 +791,6 @@
         <img src="https://web.archive.org/web/20250713091325im_/https://shettyhomoeopathy.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-27-at-7.02.50-PM.jpeg" alt="Hospital Wing">
         <div class="caption">Shetty Homoeopathic Hospital</div>
       </div>
-     
     </div>
     <div style="text-align: center; margin-top: 24px;">
       <a href="#" class="btn-outline">View Full Gallery <i class="fas fa-images"></i></a>
